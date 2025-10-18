@@ -180,5 +180,5 @@ For questions, suggestions, or contributions — feel free to open an **issue** 
 
 betatester013370@gmail.com
 
-Would you like me to **add shields/badges** (for Python, React, PostgreSQL, Flask, License, etc.) to make it more visually appealing for GitHub?
+
 ```
