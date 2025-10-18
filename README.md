@@ -1,4 +1,4 @@
-![IMG-20250216-WA0082](https://github.com/user-attachments/assets/c47cae9b-3dd1-4e17-b300-cbc80b7dd582)# Subscription Manager
+# Subscription Manager
 
 A full-stack web application designed to help users track and manage their recurring subscriptions with an interactive dashboard, timely reminders, and data export capabilities.
 
