@@ -35,10 +35,11 @@ A **full-stack web application** designed to help users **track and manage recur
 ## 🖼️ Screenshots
 
 **🔑 Login Page**  
-<img width="1896" height="906" alt="Login Screenshot" src="https://github.com/user-attachments/assets/8ef9c666-760b-43f1-a85e-7e8aa36c3e64" />
+<img width="1919" height="911" alt="Dashboard Screenshot 1" src="https://github.com/user-attachments/assets/911d5ef0-f69f-44d4-9109-39d34a089903" />
 
 **📊 Main Dashboard**  
-<img width="1919" height="911" alt="Dashboard Screenshot 1" src="https://github.com/user-attachments/assets/911d5ef0-f69f-44d4-9109-39d34a089903" />  
+<img width="1896" height="906" alt="Login Screenshot" src="https://github.com/user-attachments/assets/8ef9c666-760b-43f1-a85e-7e8aa36c3e64" />
+
 <img width="1900" height="915" alt="Dashboard Screenshot 2" src="https://github.com/user-attachments/assets/bf8eb788-2258-4133-8e64-49ab3665b2d3" />
 
 ---
