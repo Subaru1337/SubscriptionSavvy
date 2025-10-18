@@ -1,0 +1,247 @@
+/* General Resets & Font */
+:root {
+  --primary-color: #6a11cb;
+  --secondary-color: #2575fc;
+  --bg-color: #f4f7fa;
+  --card-bg: #ffffff;
+  --text-color: #333;
+  --muted-text: #777;
+  --border-color: #eef2f7;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Auth Page */
+.auth-container { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.auth-card { background: var(--card-bg); padding: 40px; border-radius: 12px; box-shadow: var(--shadow); text-align: center; max-width: 400px; width: 100%; }
+.auth-icon { font-size: 2rem; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); color: white; display: grid; place-items: center; margin: 0 auto 20px; }
+.auth-card h2 { margin-bottom: 8px; }
+.auth-card p { color: var(--muted-text); margin-top: 0; }
+.input-group { text-align: left; margin-bottom: 20px; }
+.input-group label { display: block; margin-bottom: 6px; font-weight: 500; }
+.input-group input { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; box-sizing: border-box; }
+.auth-button { width: 100%; padding: 14px; border: none; border-radius: 8px; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); color: white; font-size: 1rem; font-weight: bold; cursor: pointer; }
+.auth-switch { margin-top: 20px; color: var(--muted-text); }
+.link-button { background: none; border: none; color: var(--primary-color); font-weight: bold; cursor: pointer; padding: 4px; }
+.error-message { color: #d9534f; } .success-message { color: #5cb85c; }
+
+/* Main App Layout */
+.app-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: var(--card-bg); box-shadow: var(--shadow); }
+.logo { font-size: 1.5rem; font-weight: bold; }
+.logo-icon { background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); color: white; padding: 4px 10px; border-radius: 8px; margin-right: 8px; }
+.main-nav { display: flex; gap: 1rem; align-items: center; }
+.main-nav a { text-decoration: none; color: var(--muted-text); font-weight: 500; padding: 8px 12px; border-radius: 8px; transition: all 0.2s; }
+.main-nav a.active, .main-nav a:hover { color: var(--primary-color); background-color: #f0f3ff; }
+.user-info { display: flex; align-items: center; gap: 1rem; }
+.logout-button { background: none; border: 1px solid var(--border-color); padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+.app-content { padding: 2rem; }
+
+/* Export Button */
+.export-menu { position: relative; }
+.export-button { background: none; border: 1px solid var(--border-color); padding: 8px 12px; border-radius: 8px; cursor: pointer; font-weight: 500; }
+.export-dropdown { display: none; position: absolute; background-color: white; box-shadow: var(--shadow); border-radius: 8px; overflow: hidden; z-index: 10; }
+.export-menu:hover .export-dropdown { display: block; }
+.export-dropdown button { display: block; width: 100%; padding: 10px 15px; border: none; background: none; text-align: left; cursor: pointer; }
+.export-dropdown button:hover { background-color: #f0f3ff; }
+
+/* Dashboard */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Use a 6-column grid for flexibility */
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  grid-column: span 2; /* Each stat card will take up 2 of 6 columns */
+}
+
+.stat-card h3 {
+  margin: 0;
+  color: var(--muted-text);
+}
+
+.stat-card p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.5rem 0 0;
+  color: var(--primary-color);
+}
+
+.chart-card {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  grid-column: span 3; /* Each chart will take up 3 of 6 columns (half the width) */
+}
+
+/* Responsive adjustments for tablets and mobile */
+@media (max-width: 992px) {
+  .stat-card {
+    grid-column: span 3; /* Two stat cards per row */
+  }
+  .chart-card {
+    grid-column: span 6; /* Charts stack on new rows */
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr; /* A single column for small screens */
+  }
+  .stat-card, .chart-card {
+    grid-column: span 1; /* All items take full width of the single column */
+  }
+}
+
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Space between each item */
+  margin-top: 1rem;
+}
+
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: #f8f9fc;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.category-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.category-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.category-name {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.category-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.category-total {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.category-count {
+  font-size: 0.8rem;
+  color: var(--muted-text);
+}
+/* Subscriptions Page */
+.subscriptions-page .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.subscriptions-page button { background: var(--primary-color); color: white; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; font-weight: 500; }
+.subscription-list { display: flex; flex-direction: column; gap: 1rem; }
+.subscription-item { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); padding: 1rem; border-radius: 8px; box-shadow: var(--shadow); }
+.sub-actions button { background: none; border: 1px solid var(--border-color); margin-left: 0.5rem;color: var(--primary-color) }
+.sub-actions button.delete { border-color: #d9534f; color: #d9534f; }
+/* src/index.css */
+
+/* ... (add this to your existing styles) ... */
+
+.sub-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem; /* Adds a small space between the name and the details below it */
+  flex-grow: 1; /* Ensures this section takes up the available space */
+}
+
+.sub-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.sub-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Puts space between the category and the next payment date */
+  font-size: 0.85rem;
+  color: var(--muted-text);
+}
+
+.sub-category::before {
+  content: '●'; /* Adds a decorative bullet point */
+  margin-right: 0.5rem;
+  color: var(--secondary-color); /* Uses your app's secondary color */
+  font-size: 0.7rem;
+  vertical-align: middle;
+}
+/* Modal */
+.modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: grid; place-items: center; }
+.modal-content { background: white; padding: 2rem; border-radius: 12px; width: 90%; max-width: 500px; }
+.modal-content form { display: flex; flex-direction: column; gap: 1rem; }
+.modal-content input, .modal-content select, .modal-content textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; box-sizing: border-box; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem; }
+.modal-actions button[type="button"] { background: var(--border-color); color: var(--text-color); }
+
+
+/* --- Reminders Page --- */
+.reminders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reminder-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.reminder-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.status-tag {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: white;
+}
+
+.tag-overdue { background-color: #d9534f; /* Red */ }
+.tag-today { background-color: #5cb85c; /* Green */ }
+.tag-tomorrow { background-color: #2575fc; /* Blue */ }
+.tag-due-soon { background-color: #f0ad4e; /* Orange */ }
+.tag-upcoming { background-color: #777; /* Grey */ }
+
+.paid-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #5cb85c; /* Makes the checkmark green */
+}
