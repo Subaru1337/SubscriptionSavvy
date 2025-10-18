@@ -1,113 +1,183 @@
-# Subscription Manager
+# 💳 Subscription Manager
 
-A full-stack web application designed to help users track and manage their recurring subscriptions with an interactive dashboard, timely reminders, and data export capabilities.
+A **full-stack web application** designed to help users **track and manage recurring subscriptions** through an interactive dashboard, timely reminders, and exportable analytics.
 
-## \#\# Key Features
+---
 
-  * **Full User Authentication:** Secure user registration and login using JWT (JSON Web Tokens).
-  * **Subscription Management:** Full CRUD (Create, Read, Update, Delete) functionality for managing subscriptions.
-  * **Smart Date Calculation:** Automatically calculates the next payment date based on the billing cycle (monthly/yearly) and handles updates when the cycle is changed.
-  * **Interactive Dashboard:** At-a-glance overview of key metrics like total monthly/annual spending and active subscription count.
-  * **Data Visualization:** Features a pie chart and a detailed list to break down spending by category, with costs normalized to a monthly view.
-  * **Payment Reminders:** A dedicated page that displays all upcoming payments with color-coded status tags for "Overdue," "Due Today," "Tomorrow," and "Within a week."
-  * **One-Click Payments:** A "Mark as Paid" feature that automatically updates the subscription's next payment date.
-  * **Data Export:** Users can export their subscription data to both CSV and PDF formats.
+## 🚀 Key Features
 
------
+- **🔐 Full User Authentication**  
+  Secure user registration and login powered by **JWT (JSON Web Tokens)**.
 
-## \#\# Screenshots
+- **🧾 Subscription Management**  
+  Complete **CRUD functionality** (Create, Read, Update, Delete) for managing all your subscriptions.
 
-*[Insert screenshots of your application here. For example: the login page, the dashboard, and the subscriptions list.]*
+- **📅 Smart Date Calculation**  
+  Automatically calculates the **next payment date** based on the billing cycle (monthly/yearly) and dynamically updates it when the cycle changes.
 
-**Login Page**
-<img width="1896" height="906" alt="Screenshot 2025-10-18 191238" src="https://github.com/user-attachments/assets/8ef9c666-760b-43f1-a85e-7e8aa36c3e64" />
+- **📊 Interactive Dashboard**  
+  Get a quick overview of **total monthly/annual spending**, active subscriptions, and category breakdowns.
 
-**Main Dashboard**
-<img width="1919" height="911" alt="Screenshot 2025-10-18 191158" src="https://github.com/user-attachments/assets/911d5ef0-f69f-44d4-9109-39d34a089903" />
+- **📈 Data Visualization**  
+  Displays a **pie chart and detailed list view** showing spending by category, normalized to a monthly view.
 
-<img width="1900" height="915" alt="Screenshot 2025-10-18 191252" src="https://github.com/user-attachments/assets/bf8eb788-2258-4133-8e64-49ab3665b2d3" />
+- **⏰ Payment Reminders**  
+  View upcoming payments with **color-coded tags**:
+ 
+- **💰 One-Click Payments**  
+  Instantly **mark subscriptions as paid**, automatically updating the next payment date.
 
+- **📤 Data Export**  
+  Export all subscription data to **CSV** and **PDF** formats for external use or backup.
 
------
+---
 
-## \#\# Technology Stack
+## 🖼️ Screenshots
 
-### \#\#\# Backend
+**🔑 Login Page**  
+<img width="1896" height="906" alt="Login Screenshot" src="https://github.com/user-attachments/assets/8ef9c666-760b-43f1-a85e-7e8aa36c3e64" />
 
-  * **Framework:** Flask
-  * **Database:** PostgreSQL (with Neon) & SQLite for local development
-  * **ORM:** SQLAlchemy
-  * **Authentication:** Flask-JWT-Extended
-  * **Date Handling:** python-dateutil
-  * **File Exports:** Pandas (for CSV), ReportLab (for PDF)
-  * **Environment Variables:** python-dotenv
+**📊 Main Dashboard**  
+<img width="1919" height="911" alt="Dashboard Screenshot 1" src="https://github.com/user-attachments/assets/911d5ef0-f69f-44d4-9109-39d34a089903" />  
+<img width="1900" height="915" alt="Dashboard Screenshot 2" src="https://github.com/user-attachments/assets/bf8eb788-2258-4133-8e64-49ab3665b2d3" />
 
-### \#\#\# Frontend
+---
 
-  * **Library:** React
-  * **Build Tool:** Vite
-  * **Routing:** React Router (`react-router-dom`)
-  * **API Communication:** Axios
-  * **Charts:** Chart.js (`react-chartjs-2`)
-  * **Styling:** Plain CSS with a modular approach
+## 🧰 Technology Stack
 
------
+### 🖥️ Backend
 
-## \#\# Getting Started & Local Setup
+| Component | Technology |
+|------------|-------------|
+| **Framework** | Flask |
+| **Database** | PostgreSQL (Neon) & SQLite (local) |
+| **ORM** | SQLAlchemy |
+| **Authentication** | Flask-JWT-Extended |
+| **Date Handling** | python-dateutil |
+| **File Exports** | Pandas (CSV), ReportLab (PDF) |
+| **Env Management** | python-dotenv |
 
-Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+### 💻 Frontend
 
-### \#\#\# Prerequisites
+| Component | Technology |
+|------------|-------------|
+| **Library** | React |
+| **Build Tool** | Vite |
+| **Routing** | React Router (`react-router-dom`) |
+| **API Communication** | Axios |
+| **Charts** | Chart.js (`react-chartjs-2`) |
+| **Styling** | Plain CSS (modular structure) |
 
-  * Python (3.8+) and Pip
-  * Node.js (v18+) and npm
-  * Git
+---
 
-### \#\#\# 1. Clone the Repository
+## ⚙️ Getting Started — Local Setup
+
+Follow the steps below to run the project locally for development or testing.
+
+### 📋 Prerequisites
+
+- Python **3.8+** and Pip  
+- Node.js **v18+** and npm  
+- Git
+
+---
+
+### 🧩 1. Clone the Repository
 
 ```bash
-git clone [Your Repository URL]
-cd [Your Project Folder]
-```
+git clone <your-repo-url>
+cd <your-project-folder>
+````
 
-### \#\#\# 2. Backend Setup
+---
+
+### 🐍 2. Backend Setup
 
 ```bash
-# Navigate to the backend directory
+# Navigate to backend directory
 cd backend
 
-# Create and activate a virtual environment
+# Create and activate virtual environment
 python -m venv .venv
-source .venv/bin/activate  # On Windows, use: .venv\Scripts\activate
+source .venv/bin/activate      # On macOS/Linux
+.venv\Scripts\activate         # On Windows
 
-# Install Python dependencies
+# Install dependencies
 pip install -r requirements.txt
 
 # Create a .env file
-# (Copy the contents from .env.example if you have one, or create it from scratch)
-# Add your SECRET_KEY, JWT_SECRET_KEY, and DATABASE_URL
+# Copy from .env.example or create manually
+# Add: SECRET_KEY, JWT_SECRET_KEY, DATABASE_URL
 touch .env
 
-# Initialize the database
+# Initialize database
 flask init-db
 
-# Run the Flask server
+# Run Flask development server
 flask run
 ```
 
-The backend will now be running at `http://localhost:5000`.
+Backend runs on: **[http://localhost:5000](http://localhost:5000)**
 
-### \#\#\# 3. Frontend Setup
+---
+
+### ⚛️ 3. Frontend Setup
 
 ```bash
-# Navigate to the frontend directory
+# Navigate to frontend directory
 cd ../frontend-react
 
-# Install Node.js dependencies
+# Install dependencies
 npm install
 
-# Run the React development server
+# Run React dev server
 npm run dev
 ```
 
-The frontend will now be running at `http://localhost:5173`. Open this URL in your browser to use the application.
+Frontend runs on: **[http://localhost:5173](http://localhost:5173)**
+
+---
+
+## 🔐 Security & Privacy
+
+* JWT-based authentication for secure API access
+* Environment variables for managing secrets
+* Passwords and tokens are **never stored in plaintext**
+* Protected routes and validation on both frontend & backend
+
+---
+
+## 📦 Folder Structure (Simplified)
+
+```
+subscription-manager/
+├── backend/
+│   ├── app.py
+│   ├── models/
+│   ├── routes/
+│   ├── utils/
+│   ├── requirements.txt
+│   └── .env.example
+│
+├── frontend-react/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.js
+│
+└── README.md
+```
+
+---
+
+## 💬 Author
+
+👨‍💻 Developed by *Varad Mhatre*
+For questions, suggestions, or contributions — feel free to open an **issue** or a **pull request**!
+
+```
+
+betatester013370@gmail.com
+
+Would you like me to **add shields/badges** (for Python, React, PostgreSQL, Flask, License, etc.) to make it more visually appealing for GitHub?
+```
