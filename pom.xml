@@ -51,6 +51,14 @@
                   <version>4.0.2</version>
          </dependency>
 
+         <dependency>
+
+                  <groupld>org.testng</groupld>
+                  <artifactld>testng</artifactld>
+                  <version>7.9.0</version>
+                  <scope>test</scope>         
+         </dependency>
+
     </dependencies>
 
     <build>
