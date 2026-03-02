@@ -10,7 +10,6 @@
     <artifactId>MyProject</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!-- IMPORTANT -->
     <packaging>war</packaging>
 
     <properties>
@@ -18,11 +17,13 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.1</junit.version>
+        <testng.version>7.9.0</testng.version>
+        <selenium.version>4.18.1</selenium.version>
     </properties>
 
     <dependencies>
 
-        <!-- Servlet API (REQUIRED for Tomcat) -->
+        <!-- Servlet API (for Tomcat) -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -30,7 +31,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- JUnit 5 for Testing -->
+        <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -38,26 +39,27 @@
             <scope>test</scope>
         </dependency>
 
-         <dependency>
-                  <groupld>org.seleniumhg.selenium</groupld>
-                  <artifactld>selenium-java</artifactld>
-                  <version>4.18.1</version>
-         </dependency>
+        <!-- Selenium -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
 
-         <dependency>
+        <!-- WebDriverManager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.8.0</version>
+        </dependency>
 
-                  <groupId>io.github.bonigarcia</groupId>
-                  <artifactId>webdrivermanager</artifactId>
-                  <version>4.0.2</version>
-         </dependency>
-
-         <dependency>
-
-                  <groupld>org.testng</groupld>
-                  <artifactld>testng</artifactld>
-                  <version>7.9.0</version>
-                  <scope>test</scope>         
-         </dependency>
+        <!-- TestNG -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -83,7 +85,7 @@
                 <version>3.4.0</version>
             </plugin>
 
-            <!-- Surefire Plugin (for JUnit 5) -->
+            <!-- Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
