@@ -38,6 +38,12 @@
             <scope>test</scope>
         </dependency>
 
+         <dependency>
+                  <groupld>org.seleniumhg.selenium</groupld>
+                  <artifactld>selenium-java</artifactld>
+                  <version>4.18.1</version>
+         </dependency>
+
     </dependencies>
 
     <build>
