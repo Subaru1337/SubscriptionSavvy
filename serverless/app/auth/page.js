@@ -3,34 +3,25 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/components/auth-context'
 import { Card, CardContent } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Button } from '@/components/ui/button'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Wallet, Loader2, ShieldCheck, TrendingUp, BellRing } from 'lucide-react'
 import { toast } from 'sonner'
+import { GoogleLogin } from '@react-oauth/google'
 
 export default function AuthPage() {
   const router = useRouter()
-  const { token, login, register } = useAuth()
-  const [tab, setTab] = useState('login')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirm, setConfirm] = useState('')
+  const { token, loginWithGoogle } = useAuth()
   const [loading, setLoading] = useState(false)
 
   useEffect(() => { if (token) router.replace('/dashboard') }, [token, router])
 
-  const submit = async (e) => {
-    e.preventDefault()
-    if (!email || !password) return toast.error('Email & password required')
-    if (tab === 'register' && password !== confirm) return toast.error('Passwords do not match')
+  const handleGoogleSuccess = async (response) => {
+    if (!response?.credential) return toast.error('Google sign-in did not return a credential')
     setLoading(true)
     try {
-      if (tab === 'login') { await login(email, password); toast.success('Welcome back!') }
-      else { await register(email, password); toast.success('Account created') }
+      await loginWithGoogle(response.credential)
+      toast.success('Signed in with Google')
       router.replace('/dashboard')
-    } catch (e) { toast.error(e?.response?.data?.error || 'Authentication failed') }
+    } catch (e) { toast.error(e?.response?.data?.error || 'Google authentication failed') }
     finally { setLoading(false) }
   }
 
@@ -87,41 +78,26 @@ export default function AuthPage() {
 
           <Card className="border-border/80 bg-card/70 backdrop-blur-xl shadow-2xl shadow-emerald-950/30">
             <CardContent className="pt-6">
-              <Tabs value={tab} onValueChange={setTab} className="w-full">
-                <TabsList className="grid grid-cols-2 mb-6 bg-secondary">
-                  <TabsTrigger value="login">Sign In</TabsTrigger>
-                  <TabsTrigger value="register">Create Account</TabsTrigger>
-                </TabsList>
-
-                <form onSubmit={submit} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" autoComplete="email" placeholder="you@savvy.com" value={email} onChange={e=>setEmail(e.target.value)} />
+              <div className="space-y-4">
+                <p className="text-sm text-muted-foreground text-center">Use your Google account to continue securely.</p>
+                <div className="flex justify-center">
+                  <GoogleLogin
+                    onSuccess={handleGoogleSuccess}
+                    onError={() => toast.error('Google sign-in popup failed')}
+                    useOneTap
+                    text="continue_with"
+                    shape="pill"
+                    size="large"
+                    theme="outline"
+                  />
+                </div>
+                {loading && (
+                  <div className="flex items-center justify-center text-sm text-muted-foreground">
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Signing you in...
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="password">Password</Label>
-                    <Input id="password" type="password" autoComplete={tab==='login'?'current-password':'new-password'} placeholder="••••••••" value={password} onChange={e=>setPassword(e.target.value)} />
-                  </div>
-                  <TabsContent value="register" className="m-0 p-0">
-                    <div className="space-y-2">
-                      <Label htmlFor="confirm">Confirm Password</Label>
-                      <Input id="confirm" type="password" placeholder="••••••••" value={confirm} onChange={e=>setConfirm(e.target.value)} />
-                    </div>
-                  </TabsContent>
-
-                  <Button type="submit" disabled={loading} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold">
-                    {loading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
-                    {tab === 'login' ? 'Sign in to dashboard' : 'Create my account'}
-                  </Button>
-                </form>
-              </Tabs>
-
-              <p className="text-center text-xs text-muted-foreground mt-6">
-                {tab==='login' ? "New here? " : "Already a member? "}
-                <button className="text-primary hover:underline font-medium" onClick={() => setTab(tab==='login'?'register':'login')}>
-                  {tab==='login' ? 'Create an account' : 'Sign in'}
-                </button>
-              </p>
+                )}
+              </div>
             </CardContent>
           </Card>
         </div>

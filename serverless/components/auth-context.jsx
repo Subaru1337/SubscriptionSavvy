@@ -45,6 +45,14 @@ export default function AuthProvider({ children }) {
     return data
   }
 
+  const loginWithGoogle = async (credential) => {
+    const { data } = await api.post('/auth/google', { credential })
+    localStorage.setItem('ss_token', data.access_token)
+    setToken(data.access_token)
+    await fetchMe()
+    return data
+  }
+
   const logout = () => {
     localStorage.removeItem('ss_token')
     setToken(null)
@@ -53,7 +61,7 @@ export default function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, token, loading, login, register, logout, refreshUser: fetchMe }}>
+    <AuthContext.Provider value={{ user, token, loading, login, register, loginWithGoogle, logout, refreshUser: fetchMe }}>
       {children}
     </AuthContext.Provider>
   )

@@ -1,6 +1,7 @@
 import './globals.css'
 import { Toaster } from '@/components/ui/sonner'
 import AuthProvider from '@/components/auth-context'
+import GoogleAuthProvider from '@/components/google-auth-provider'
 
 export const metadata = {
   title: 'SubscriptionSavvy — Track every rupee.',
@@ -16,9 +17,11 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        <GoogleAuthProvider>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </GoogleAuthProvider>
         <Toaster theme="dark" position="top-right" richColors closeButton />
       </body>
     </html>
